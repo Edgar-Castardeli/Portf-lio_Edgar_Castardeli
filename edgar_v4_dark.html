@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">Edgar Castardeli - Portfólio</title>
+    <meta name="description"
+        content="Portfólio de Edgar Castardeli, profissional com experiência em Desenvolvimento Front-End, Gestão Financeira e Análise de Dados com Power BI.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --background: #f8fafc;
+            /* slate-50 */
+            --text-primary: #0f172a;
+            /* slate-900 */
+            --text-secondary: #475569;
+            /* slate-600 */
+            --border-color: #e2e8f0;
+            /* slate-200 */
+            --card-bg: #ffffff;
+            /* white */
+            --header-bg: rgba(248, 250, 252, 0.8);
+            /* slate-50/80 */
+            --grid-color: rgba(0, 0, 0, 0.03);
+        }
+
+        html.dark {
+            --background: #0f172a;
+            /* slate-900 */
+            --text-primary: #f8fafc;
+            /* slate-50 */
+            --text-secondary: #94a3b8;
+            /* slate-400 */
+            --border-color: #334155;
+            /* slate-700 */
+            --card-bg: #1e293b;
+            /* slate-800 */
+            --header-bg: rgba(15, 23, 42, 0.8);
+            /* slate-900/80 */
+            --grid-color: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(to right, var(--grid-color) 1px, transparent 1px);
+            background-size: 2rem 2rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #4f46e5, #a855f7);
+            /* indigo-600 to purple-500 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        .section-padding {
+            padding: 4rem 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .section-padding {
+                padding: 6rem 2rem;
+            }
+        }
+
+        .nav-link.active {
+            color: #a855f7;
+            /* purple-500 */
+            font-weight: 700;
+        }
+
+        /* Animation for elements fading in on scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- =========== HEADER =========== -->
+    <header
+        class="bg-[--header-bg] backdrop-blur-sm sticky top-0 z-50 border-b border-[--border-color] transition-colors duration-300">
+        <div class="container mx-auto px-4 flex items-center justify-between h-20">
+            <a href="#home" class="flex items-center">
+                <img src="https://raw.githubusercontent.com/Edgar-Castardeli/Imagens/refs/heads/main/logo%202.png"
+                    alt="Logo de Edgar Castardeli" class="w-12 h-12 rounded-full">
+            </a>
+            <div class="flex items-center gap-4 md:gap-8">
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="#home"
+                        class="nav-link text-sm font-medium text-[--text-secondary] hover:text-purple-500 transition-colors"
+                        data-i18n="nav_home">Início</a>
+                    <a href="#about"
+                        class="nav-link text-sm font-medium text-[--text-secondary] hover:text-purple-500 transition-colors"
+                        data-i18n="nav_about">Sobre</a>
+                    <a href="#skills"
+                        class="nav-link text-sm font-medium text-[--text-secondary] hover:text-purple-500 transition-colors"
+                        data-i18n="nav_skills">Skills</a>
+                    <a href="#projects"
+                        class="nav-link text-sm font-medium text-[--text-secondary] hover:text-purple-500 transition-colors"
+                        data-i18n="nav_projects">Projetos</a>
+                    <a href="#contact"
+                        class="nav-link text-sm font-medium text-[--text-secondary] hover:text-purple-500 transition-colors"
+                        data-i18n="nav_contact">Contato</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-4">
+                        <button onclick="setLanguage('pt')" title="Português">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg" alt="Brasil"
+                                class="w-8 h-8"> <!-- Ajuste o tamanho -->
+                        </button>
+                        <button onclick="setLanguage('en')" title="English">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg"
+                                alt="Reino Unido" class="w-9 h-8"> <!-- Ajuste o tamanho -->
+                        </button>
+                        <button onclick="setLanguage('es')" title="Español">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg" alt="Espanha"
+                                class="w-8 h-6"> <!-- Ajuste o tamanho -->
+                        </button>
+                    </div>
+                    <button id="theme-toggle" class="text-[--text-secondary] hover:text-purple-500">
+                        <i class="fa-solid fa-moon text-lg" id="theme-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- =========== HERO SECTION =========== -->
+        <section id="home" class="section-padding flex items-center min-h-screen">
+            <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-center md:text-left">
+                    <span
+                        class="inline-block bg-purple-500/10 text-purple-400 text-sm font-semibold px-4 py-1 rounded-full"
+                        data-i18n="hero_badge">Desenvolvedor Front-End & Analista de Dados</span>
+                    <h1 class="mt-4 text-4xl md:text-6xl font-extrabold tracking-tight text-[--text-primary]">
+                        Edgar Castardeli
+                    </h1>
+                    <p class="mt-6 text-lg text-[--text-secondary] max-w-xl mx-auto md:mx-0"
+                        data-i18n="hero_description">
+                        Profissional versátil com experiência em gestão, finanças e tecnologia, focado em criar soluções
+                        que unem dados, design e estratégia.
+                    </p>
+                    <div class="mt-8 flex justify-center md:justify-start gap-4">
+                        <a href="#contact"
+                            class="px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg hover:opacity-90 transition-opacity shadow-lg"
+                            data-i18n="hero_cta_contact">
+                            Entre em Contato
+                        </a>
+                        <a href="#projects"
+                            class="px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg hover:opacity-90 transition-opacity shadow-lg"
+                            data-i18n="hero_cta_projects">
+                            Ver Projetos
+                        </a>
+                    </div>
+                    <div class="mt-8 flex justify-center md:justify-start gap-6 text-slate-400">
+                        <a href="https://www.linkedin.com/in/edgar-castardeli-2199751b0/" target="_blank"
+                            class="hover:text-purple-500 transition-colors"><i
+                                class="fa-brands fa-linkedin text-2xl"></i></a>
+                        <a href="https://github.com/Edgar-Castardeli" target="_blank"
+                            class="hover:text-purple-500 transition-colors"><i
+                                class="fa-brands fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-center items-center">
+                    <div class="relative">
+
+                        <!-- =========== Trocar foto de perfil depois ========= -->
+                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQEJAbXpJ7muFg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1686704560780?e=1756944000&v=beta&t=w4KEUPkJ4bTDCJ1ApzXQqkCau1nasW_4Y5G8emOVqsU"
+                            alt="Foto de Edgar Castardeli"
+                            class="rounded-full shadow-2xl w-96 h-96 object-cover border-4 border-[--border-color]">
+                        <div class="absolute inset-0 border-4 border-purple-500/50 rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== ABOUT SECTION =========== -->
+        <section id="about" class="section-padding bg-[--card-bg] border-y border-[--border-color]">
+            <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-section">
+                    <h2 class="text-3xl font-bold tracking-tight text-[--text-primary]" data-i18n="about_title">Sobre
+                        Mim</h2>
+                    <p class="mt-4 text-lg text-[--text-secondary]" data-i18n="about_p1">
+                        Sou um profissional versátil, com ampla experiência em gestão administrativa e financeira,
+                        atuando em áreas como controladoria, gestão de contratos, manutenção e TI. Ao longo da minha
+                        trajetória, desenvolvi habilidades sólidas em liderança, otimização de processos e tomada de
+                        decisão estratégica.
+                    </p>
+                    <p class="mt-4 text-lg text-[--text-secondary]" data-i18n="about_p2">
+                        Nos últimos anos, aprofundei meus conhecimentos em tecnologia, especialmente em análise de dados
+                        com Power BI e SQL, e ampliei minhas competências no desenvolvimento front-end com HTML, CSS e
+                        JavaScript. Busco continuamente aprimorar minhas habilidades para entregar soluções completas,
+                        unindo dados, design e estratégia.
+                    </p>
+                </div>
+                <div class="hidden lg:flex justify-center items-center fade-in-section">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+                        alt="Dashboard de Power BI" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== SKILLS SECTION =========== -->
+        <section id="skills" class="section-padding">
+            <div class="container mx-auto">
+                <div class="text-center max-w-3xl mx-auto fade-in-section">
+                    <h2 class="text-3xl font-bold tracking-tight text-[--text-primary]" data-i18n="skills_title">Minhas
+                        Skills e Habilidades</h2>
+                    <p class="mt-4 text-lg text-[--text-secondary]" data-i18n="skills_subtitle">Um conjunto de
+                        competências que conectam o mundo dos negócios e da tecnologia.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Skill Card -->
+                    <div
+                        class="bg-[--card-bg] p-6 rounded-2xl text-center border border-[--border-color] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all fade-in-section">
+                        <div
+                            class="mx-auto w-16 h-16 bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-3xl">
+                            <i class="fa-solid fa-chart-simple"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-bold text-[--text-primary]" data-i18n="skill_powerbi">Power BI</h3>
+                        <p class="mt-1 text-sm text-[--text-secondary]" data-i18n="skill_powerbi_desc">Dashboards, DAX,
+                            ETL, relatórios dinâmicos.</p>
+                    </div>
+                    <!-- Skill Card -->
+                    <div
+                        class="bg-[--card-bg] p-6 rounded-2xl text-center border border-[--border-color] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all fade-in-section">
+                        <div
+                            class="mx-auto w-16 h-16 bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-3xl">
+                            <i class="fa-brands fa-html5"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-bold text-[--text-primary]" data-i18n="skill_html">HTML</h3>
+                        <p class="mt-1 text-sm text-[--text-secondary]" data-i18n="skill_html_desc">Páginas web
+                            estruturadas e semânticas.</p>
+                    </div>
+                    <!-- Skill Card -->
+                    <div
+                        class="bg-[--card-bg] p-6 rounded-2xl text-center border border-[--border-color] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all fade-in-section">
+                        <div
+                            class="mx-auto w-16 h-16 bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-3xl">
+                            <i class="fa-brands fa-css3-alt"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-bold text-[--text-primary]" data-i18n="skill_css">CSS</h3>
+                        <p class="mt-1 text-sm text-[--text-secondary]" data-i18n="skill_css_desc">Layouts responsivos e
+                            estilização.</p>
+                    </div>
+                    <!-- Skill Card -->
+                    <div
+                        class="bg-[--card-bg] p-6 rounded-2xl text-center border border-[--border-color] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all fade-in-section">
+                        <div
+                            class="mx-auto w-16 h-16 bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-3xl">
+                            <i class="fa-brands fa-js"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-bold text-[--text-primary]" data-i18n="skill_JavaScript">JavaScript
+                        </h3>
+                        <p class="mt-1 text-sm text-[--text-secondary]" data-i18n="skill_JavaScript_desc">Interatividade
+                            e integração com APIs.</p>
+                    </div>
+                    <!-- Skill Card -->
+                    <div
+                        class="bg-[--card-bg] p-6 rounded-2xl text-center border border-[--border-color] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all fade-in-section">
+                        <div
+                            class="mx-auto w-16 h-16 bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-3xl">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-bold text-[--text-primary]" data-i18n="skill_SQL">SQL</h3>
+                        <p class="mt-1 text-sm text-[--text-secondary]" data-i18n="skill_SQL_desc">Consultas e
+                            manipulação de dados.</p>
+                    </div>
+                    <!-- Skill Card -->
+                    <div
+                        class="bg-[--card-bg] p-6 rounded-2xl text-center border border-[--border-color] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all fade-in-section">
+                        <div
+                            class="mx-auto w-16 h-16 bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-3xl">
+                            <i class="fa-solid fa-file-excel"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-bold text-[--text-primary]" data-i18n="skill_Excel Avançado">Excel
+                            Avançado</h3>
+                        <p class="mt-1 text-sm text-[--text-secondary]" data-i18n="skill_Excel Avançado_desc">Tabelas
+                            dinâmicas, macros e fórmulas.</p>
+                    </div>
+                    <!-- Skill Card -->
+                    <div
+                        class="bg-[--card-bg] p-6 rounded-2xl text-center border border-[--border-color] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all fade-in-section">
+                        <div
+                            class="mx-auto w-16 h-16 bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-3xl">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-bold text-[--text-primary]" data-i18n="skill_Power Automate">Power
+                            Automate</h3>
+                        <p class="mt-1 text-sm text-[--text-secondary]" data-i18n="skill_Power Automate_desc">
+                            Automatização de processos.</p>
+                    </div>
+                    <!-- Skill Card -->
+                    <div
+                        class="bg-[--card-bg] p-6 rounded-2xl text-center border border-[--border-color] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all fade-in-section">
+                        <div
+                            class="mx-auto w-16 h-16 bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-3xl">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-bold text-[--text-primary]" data-i18n="skill_Gestão Financeira">
+                            Gestão Financeira</h3>
+                        <p class="mt-1 text-sm text-[--text-secondary]" data-i18n="skill_Gestão Financeira_desc">Gestão
+                            de caixa, DRE e análises.</p>
+                    </div>
+
+                    <!-- Add other skill cards similarly -->
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== PROJECTS SECTION =========== -->
+        <section id="projects" class="section-padding bg-[--card-bg] border-y border-[--border-color]">
+            <div class="container mx-auto">
+                <div class="text-center max-w-3xl mx-auto fade-in-section">
+                    <h2 class="text-3xl font-bold tracking-tight text-[--text-primary]">Meus Projetos<span
+                            class="gradient-text"></span></h2>
+                    <p class="mt-4 text-lg text-[--text-secondary]" data-i18n="projects_subtitle">Alguns dos projetos
+                        que desenvolvi, aplicando minhas habilidades em dados e desenvolvimento.</p>
+                </div>
+                <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card -->
+                    <div
+                        class="bg-[--background] p-6 rounded-2xl border border-[--border-color] hover:border-purple-500 transition-colors fade-in-section">
+                        <img src="https://placehold.co/600x400/1e293b/a855f7?text=Dashboard+de+Fluxo+de+Caixa"
+                            alt="Dashboard de Fluxo de Caixa" class="rounded-lg w-full h-48 object-cover">
+                        <h3 class="mt-4 text-xl font-bold text-[--text-primary]" data-i18n="project1_title">Dashboard
+                            Power BI - Fluxo de Caixa</h3>
+                        <p class="mt-2 text-sm text-[--text-secondary]" data-i18n="project1_desc">Dashboard interativo
+                            para análise de fluxo de caixa, com indicadores de performance, previsões e análise de
+                            despesas.</p>
+                        <a href="#"
+                            class="mt-4 inline-block font-semibold text-purple-500 dark:text-purple-400 hover:text-purple-600 dark:hover:text-purple-300"
+                            data-i18n="github_link">Ver no GitHub <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                    </div>
+                    <!-- Add other project cards similarly -->
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== CONTACT SECTION =========== -->
+        <section id="contact" class="section-padding">
+            <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-start">
+                <div class="fade-in-section">
+                    <h2 class="text-3xl font-bold tracking-tight text-[--text-primary]" data-i18n="contact_title">Vamos
+                        Conversar</h2>
+                    <p class="mt-4 text-lg text-[--text-secondary]" data-i18n="contact_subtitle">Estou aberto a novas
+                        oportunidades e colaborações. Se você tem um projeto em mente ou gostaria de saber mais sobre
+                        meu trabalho, entre em contato.</p>
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-envelope text-xl text-purple-500"></i>
+                            <a href="mailto:edcastardeli@yahoo.com.br"
+                                class="text-[--text-secondary] hover:text-purple-500">edcastardeli@yahoo.com.br</a>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-phone text-xl text-purple-500"></i>
+                            <span class="text-[--text-secondary]">+55 (27) 99798-8096</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[--card-bg] p-8 rounded-2xl border border-[--border-color] shadow-lg fade-in-section">
+                    <h3 class="text-2xl font-bold text-[--text-primary]" data-i18n="contact_form_title">Envie uma
+                        mensagem</h3>
+                    <form id="contact-form" class="mt-6 space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-[--text-secondary]"
+                                data-i18n="form_name">Nome</label>
+                            <input type="text" id="name" required
+                                class="mt-1 block w-full px-4 py-3 bg-[--background] border border-[--border-color] rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 text-[--text-primary]">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-[--text-secondary]"
+                                data-i18n="form_message">Mensagem</label>
+                            <textarea id="message" rows="4" required
+                                class="mt-1 block w-full px-4 py-3 bg-[--background] border border-[--border-color] rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 text-[--text-primary]"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                                data-i18n="form_submit">
+                                Enviar via WhatsApp
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========== FOOTER =========== -->
+    <footer class="bg-[--card-bg] border-t border-[--border-color]">
+        <div class="container mx-auto px-4 py-8 text-center text-[--text-secondary] text-sm">
+            <p data-i18n="footer_text">&copy; 2025 Edgar Castardeli. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- =========== JAVASCRIPT =========== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- THEME TOGGLE ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const htmlEl = document.documentElement;
+
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            htmlEl.classList.add(savedTheme);
+            themeIcon.classList.toggle('fa-sun', savedTheme === 'light');
+            themeIcon.classList.toggle('fa-moon', savedTheme === 'dark');
+
+            themeToggle.addEventListener('click', () => {
+                htmlEl.classList.toggle('dark');
+                const isDark = htmlEl.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                themeIcon.classList.toggle('fa-sun', !isDark);
+                themeIcon.classList.toggle('fa-moon', isDark);
+            });
+
+            // --- TRANSLATION LOGIC ---
+            const translations = {
+                pt: {
+                    page_title: "Edgar Castardeli - Portfólio", nav_home: "Início", nav_about: "Sobre", nav_skills: "Skills", nav_projects: "Projetos", nav_contact: "Contato", hero_badge: "Desenvolvedor Front-End & Analista de Dados", hero_description: "Profissional versátil com experiência em gestão, finanças e tecnologia, focado em criar soluções que unem dados, design e estratégia.", hero_cta_contact: "Entre em Contato", hero_cta_projects: "Ver Projetos", about_title: "Sobre Mim", about_p1: "Sou um profissional versátil, com ampla experiência em gestão administrativa e financeira, atuando em áreas como controladoria, gestão de contratos, manutenção e TI. Ao longo da minha trajetória, desenvolvi habilidades sólidas em liderança, otimização de processos e tomada de decisão estratégica.", about_p2: "Nos últimos anos, aprofundei meus conhecimentos em tecnologia, especialmente em análise de dados com Power BI e SQL, e ampliei minhas competências no desenvolvimento front-end com HTML, CSS e JavaScript. Busco continuamente aprimorar minhas habilidades para entregar soluções completas, unindo dados, design e estratégia.", skills_title: "Minhas Skills e Habilidades", skills_subtitle: "Um conjunto de competências que conectam o mundo dos negócios e da tecnologia.", skill_powerbi: "Power BI", skill_powerbi_desc: "Dashboards, DAX, ETL, relatórios dinâmicos.", skill_html: "HTML", skill_html_desc: "Páginas web estruturadas e semânticas.", skill_css: "CSS", skill_css_desc: "Layouts responsivos e estilização.", skill_js: "JavaScript", skill_js_desc: "Interatividade e integração com APIs.", projects_title: "Meus Projetos", projects_subtitle: "Alguns dos projetos que desenvolvi, aplicando minhas habilidades em dados e desenvolvimento.", project1_title: "Dashboard Power BI - Fluxo de Caixa", project1_desc: "Dashboard interativo para análise de fluxo de caixa, com indicadores de performance, previsões e análise de despesas.", github_link: "Ver no GitHub", contact_title: "Vamos Conversar", contact_subtitle: "Estou aberto a novas oportunidades e colaborações. Se você tem um projeto em mente ou gostaria de saber mais sobre meu trabalho, entre em contato.", contact_form_title: "Envie uma mensagem", form_name: "Nome", form_message: "Mensagem", form_submit: "Enviar via WhatsApp", footer_text: "© 2025 Edgar Castardeli. Todos os direitos reservados."
+                },
+                en: {
+                    page_title: "Edgar Castardeli - Portfolio", nav_home: "Home", nav_about: "About", nav_skills: "Skills", nav_projects: "Projects", nav_contact: "Contact", hero_badge: "Front-End Developer & Data Analyst", hero_description: "Versatile professional with experience in management, finance, and technology, focused on creating solutions that unite data, design, and strategy.", hero_cta_contact: "Get in Touch", hero_cta_projects: "See Projects", about_title: "About Me", about_p1: "I am a versatile professional with extensive experience in administrative and financial management, working in areas such as controlling, contract management, maintenance, and IT. Throughout my career, I have developed solid skills in leadership, process optimization, and strategic decision-making.", about_p2: "In recent years, I have deepened my knowledge in technology, especially in data analysis with Power BI and SQL, and expanded my skills in front-end development with HTML, CSS, and JavaScript. I continuously seek to improve my abilities to deliver complete solutions, combining data, design, and strategy.", skills_title: "My Skills and Abilities", skills_subtitle: "A set of skills that connect the worlds of business and technology.", skill_powerbi: "Power BI", skill_powerbi_desc: "Dashboards, DAX, ETL, dynamic reports.", skill_html: "HTML", skill_html_desc: "Structured and semantic web pages.", skill_css: "CSS", skill_css_desc: "Responsive layouts and styling.", skill_js: "JavaScript", skill_js_desc: "Interactivity and API integration.", projects_title: "My Projects", projects_subtitle: "Some of the projects I have developed, applying my skills in data and development.", project1_title: "Power BI Dashboard - Cash Flow", project1_desc: "Interactive dashboard for cash flow analysis, with performance indicators, forecasts, and expense analysis.", github_link: "See on GitHub", contact_title: "Let's Talk", contact_subtitle: "I am open to new opportunities and collaborations. If you have a project in mind or would like to know more about my work, please get in touch.", contact_form_title: "Send a message", form_name: "Name", form_message: "Message", form_submit: "Send via WhatsApp", footer_text: "© 2025 Edgar Castardeli. All rights reserved."
+                },
+                es: {
+                    page_title: "Edgar Castardeli - Portafolio", nav_home: "Inicio", nav_about: "Sobre", nav_skills: "Habilidades", nav_projects: "Proyectos", nav_contact: "Contacto", hero_badge: "Desarrollador Front-End & Analista de Datos", hero_description: "Profesional versátil con experiencia en gestión, finanzas y tecnología, enfocado en crear soluciones que unen datos, diseño y estrategia.", hero_cta_contact: "Contacto", hero_cta_projects: "Ver Proyectos", about_title: "Sobre Mí", about_p1: "Soy un profesional versátil, con amplia experiencia en gestión administrativa y financiera, actuando en áreas como contraloría, gestión de contratos, mantenimiento y TI. A lo largo de mi trayectoria, he desarrollado habilidades sólidas en liderazgo, optimización de procesos y toma de decisiones estratégicas.", about_p2: "En los últimos años, he profundizado mis conocimientos en tecnología, especialmente en análisis de datos con Power BI y SQL, y he ampliado mis competencias en el desarrollo front-end con HTML, CSS y JavaScript. Busco continuamente mejorar mis habilidades para entregar soluciones completas, uniendo datos, diseño y estrategia.", skills_title: "Mis Habilidades y Competencias", skills_subtitle: "Un conjunto de competencias que conectan el mundo de los negocios y la tecnología.", skill_powerbi: "Power BI", skill_powerbi_desc: "Dashboards, DAX, ETL, informes dinámicos.", skill_html: "HTML", skill_html_desc: "Páginas web estructuradas y semánticas.", skill_css: "CSS", skill_css_desc: "Diseños responsivos y estilización.", skill_js: "JavaScript", skill_js_desc: "Interactividad e integración con APIs.", projects_title: "Mis Proyectos", projects_subtitle: "Algunos de los proyectos que he desarrollado, aplicando mis habilidades en datos y desarrollo.", project1_title: "Dashboard Power BI - Flujo de Caja", project1_desc: "Dashboard interactivo para análisis de flujo de caja, con indicadores de rendimiento, previsiones y análisis de gastos.", github_link: "Ver en GitHub", contact_title: "Hablemos", contact_subtitle: "Estoy abierto a nuevas oportunidades y colaboraciones. Si tienes un proyecto en mente o te gustaría saber más sobre mi trabajo, ponte en contacto.", contact_form_title: "Envía un mensaje", form_name: "Nombre", form_message: "Mensaje", form_submit: "Enviar por WhatsApp", footer_text: "© 2025 Edgar Castardeli. Todos los derechos reservados."
+                }
+            };
+
+            function applyLanguage(lang) {
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+                document.documentElement.lang = lang;
+            }
+
+            window.setLanguage = function (lang) {
+                localStorage.setItem('language', lang);
+                applyLanguage(lang);
+            }
+
+            const savedLang = localStorage.getItem('language') || 'pt';
+            applyLanguage(savedLang);
+
+            // --- ANIMATIONS ON SCROLL ---
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+
+            // --- ACTIVE NAV LINK ON SCROLL ---
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('main section');
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href').substring(1) === entry.target.id);
+                        });
+                    }
+                });
+            }, { rootMargin: "-50% 0px -50% 0px" });
+            contentSections.forEach(section => navObserver.observe(section));
+
+            // --- WHATSAPP FORM SUBMISSION ---
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const name = document.getElementById('name').value;
+                const message = document.getElementById('message').value;
+                const phone = '5527997988096';
+                const text = `Olá! Me chamo ${name}. ${message}`;
+                const encodedText = encodeURIComponent(text);
+                const url = `https://wa.me/${phone}?text=${encodedText}`;
+                window.open(url, '_blank');
+            });
+        });
+    </script>
+</body>
+
+</html>
